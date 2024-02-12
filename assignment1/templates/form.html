@@ -1,0 +1,28 @@
+<html lang="en">
+    <head>
+        <title>SpaCy Parsing Sample</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+  <body>
+    <div class="column">
+        <h2>SpaCy Parsing Sample</h2>
+
+        <p>Replace the text below (or use it), choose whether to see entity or dependency parsing, and click submit.</p>
+
+        <form method="POST" action="/">
+          <textarea name="text" rows="13" cols="80">{{input}}</textarea><br><br>
+            <input type="radio" id="ner" name="parse-type" value="ner" checked="checked">
+            <label for="ner">Named entity parsing</label><br>
+            <input type="radio" id="dep" name="parse-type" value="dep">
+            <label for="dep">Dependency parsing</label><br>
+          <p><input type="submit"/></p>
+        </form>
+    </div>
+
+  </body>
+
+</html>

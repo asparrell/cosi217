@@ -1,0 +1,25 @@
+<html>
+
+  <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+  <div class="column">
+
+    <h2>{{ title }}</h2>
+
+    <p>{{ foreword | safe }}</p>
+
+    <div id="results">
+      {{ markup | safe }}
+    </div>
+
+    <p><a href=""><< Back to form</a></p>
+  </div>
+  </body>
+
+</html>
