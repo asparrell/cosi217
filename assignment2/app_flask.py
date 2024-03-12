@@ -16,6 +16,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///entities.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
+
 class Relation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     entity = db.Column(db.String(80), unique=False, nullable=False)
@@ -27,6 +28,7 @@ class Relation(db.Model):
         return "Relation from %r to %r of type %r" % (self.head, self.term, self.type)
 
 # For the website we use the regular Flask functionality and serve up HTML pages.
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -49,7 +51,6 @@ def index():
                                     type=dependencies[word]["relation"])
                 db.session.add(relation)
 
-
         if method == "result":
             title = "Entities and Dependencies"
             foreword = "<p>Original text:</p><p><i>" + text + "</i></p><p>Processing results:</p>"
@@ -65,18 +66,23 @@ def index():
                 markup_paragraphed += dep_str
             markup_paragraphed += "</table>"
 
-
         else:
             title = "Database View"
             foreword = "Entities and their heads data:"
             markup_paragraphed = "<table><tr><th>Entity</th><th style='color:#6b6bc7'>Term</th><th>Relation</th><th style='color:#6b6bc7'>Head</th></tr>"
             for rel in db.session.execute(db.select(Relation)).scalars():
-                dep_str = ("<tr><td>" + rel.entity + "</td><td style='color:#6b6bc7'>" + rel.term +
-                           "</td><td>" + rel.type + "</td><td style='color:#6b6bc7'>" + rel.head +
-                           "</td></tr>")
+                if rel.entity in markup_paragraphed:
+                    dep_str = ("<tr><td> </td><td style='color:#6b6bc7'>" + rel.term +
+                               "</td><td>" + rel.type + "</td><td style='color:#6b6bc7'>" + rel.head +
+                               "</td></tr>")
+                else:
+                    dep_str = ("<tr><td>" + rel.entity + "</td><td style='color:#6b6bc7'>" + rel.term +
+                               "</td><td>" + rel.type + "</td><td style='color:#6b6bc7'>" + rel.head +
+                               "</td></tr>")
                 markup_paragraphed += dep_str
             markup_paragraphed += "</table>"
         return render_template('result.html', markup=markup_paragraphed, foreword=foreword, title=title)
+
 
 with app.app_context():
     db.create_all()
