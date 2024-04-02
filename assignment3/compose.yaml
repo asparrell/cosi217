@@ -1,0 +1,17 @@
+
+services:
+  flask:
+    build:
+      context: flask
+    ports:
+      - 8080:8080
+  fastapi:
+    build:
+      context: fastapi
+    ports:
+      - 8000:8000
+  streamlit:
+    build:
+      context: streamlit
+    ports:
+      - 5801:5801

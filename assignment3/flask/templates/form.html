@@ -1,0 +1,28 @@
+<html lang="en">
+    <head>
+        <title>SpaCy Parsing Sample</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+  <body>
+    <div class="column">
+        <h2>SpaCy Parsing Sample</h2>
+
+        <p>Replace the text below (or use it), choose whether to see entity or dependency parsing, and click submit.</p>
+
+        <form method="POST" action="/assignment3/flask/static">
+          <textarea name="text" rows="13" cols="80">{{input}}</textarea><br><br>
+            <input type="radio" id="result" name="result-type" value="result" checked="checked">
+            <label for="result">View Results</label><br>
+            <input type="radio" id="db" name="result-type" value="db">
+            <label for="db">View Database</label><br>
+          <p><input type="submit"/></p>
+        </form>
+    </div>
+
+  </body>
+
+</html>
