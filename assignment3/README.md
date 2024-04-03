@@ -12,9 +12,7 @@ select whether you would like to see the formatted results or what is stored in 
 
 
 ### Streamlit
-After the containers are running with the compose, run `docker stop assignment3=streamlit-1`. Then, run `docker run -d -p 8501:8501 assignment3-streamlit` and the site should load on http://localhost:8501 . 
-
-[//]: # (Simply navigate to ____ in the browser to view the site. On this page, you can select "entities" or "dependencies" from the sidebar, and then you can change between the table and graph views by selecting the corresponding tab.)
+Simply navigate to http://localhost:8501 in the browser to view the site. On this page, you can select "entities" or "dependencies" from the sidebar, and then you can change between the table and graph views by selecting the corresponding tab.
 
 
 ### FastAPI

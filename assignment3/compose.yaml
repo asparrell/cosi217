@@ -14,4 +14,4 @@ services:
     build:
       context: streamlit
     ports:
-      - 5801:5801
+      - 8501:8501
